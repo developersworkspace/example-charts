@@ -1,0 +1,19 @@
+{
+  "name": "dw-bar-chart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Barend Erasmus",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/core": "^2.4.7",
+    "@types/d3": "^4.5.0",
+    "angular": "^1.6.2",
+    "d3": "^4.5.0",
+    "rxjs": "^5.1.1",
+    "zone.js": "^0.7.7"
+  }
+}
