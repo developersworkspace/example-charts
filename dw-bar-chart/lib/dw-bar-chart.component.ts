@@ -3,11 +3,11 @@ import * as d3 from 'd3';
 
 
 @Component({
-  selector: 'app-root-chart',
-  templateUrl: './app.component.html',
+  selector: 'dw-bar-chart',
+  templateUrl: './dw-bar-chart.component.html',
   providers: []
 })
-export class AppComponent {
+export class DWBarChart {
 
   constructor(private elementRef: ElementRef) {
 
@@ -17,32 +17,36 @@ export class AppComponent {
 
     var data = [
       {
-        country: 'South Africa',
-        value: 250
+        country: 'USA',
+        value: 267046.9
       },
       {
-        country: 'Germany',
-        value: 700
+        country: 'China',
+        value: 159107.3
+      },
+      {
+        country: 'Japan',
+        value: 76011.7
+      },
+      {
+        country: 'Brazil',
+        value: 60775.2
       },
       {
         country: 'Russia',
-        value: 150
+        value: 50956.1
       },
       {
-        country: 'Mexico',
-        value: 575
+        country: 'Germany',
+        value: 47717.8
       },
       {
-        country: 'France',
-        value: 375
-      },
-      {
-        country: 'USA',
-        value: 625
+        country: 'India',
+        value: 42452.4
       }
     ];
 
-    var margin = { top: 20, right: 20, bottom: 30, left: 40 },
+    var margin = { top: 20, right: 20, bottom: 40, left: 70 },
       width = 960 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
@@ -72,7 +76,7 @@ export class AppComponent {
       .attr("width", x.bandwidth())
       .attr("y", function (d) { return y(d.value); })
       .attr("height", function (d) { return height - y(d.value); })
-      .attr('fill', (d) => { return this.lightenDarkenColor('#3232ff', 100 - (d.value / 700 * 100)) });
+      .attr('fill', (d) => { return this.lightenDarkenColor('#3232ff', 100 - (d.value / d3.max(data, function (d) { return d.value; }) * 100)) });
 
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -80,6 +84,21 @@ export class AppComponent {
 
     svg.append("g")
       .call(d3.axisLeft(y));
+
+    svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left)
+      .attr("x", 0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("Vehicles in Use in 2016");
+
+
+    svg.append("text")
+      .attr("x", width / 2)
+      .attr("y", height + margin.bottom - 5)
+      .style("text-anchor", "middle")
+      .text("Country");
 
   }
 

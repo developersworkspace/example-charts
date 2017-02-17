@@ -5,12 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { AppComponent as ChartComponent} from './../../../dw-bar-chart/lib/app.component';
+import { DWBarChart } from './../../../dw-bar-chart/lib/dw-bar-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChartComponent
+    DWBarChart
   ],
   imports: [
     BrowserModule,
